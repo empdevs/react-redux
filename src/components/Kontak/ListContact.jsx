@@ -22,15 +22,13 @@ export default function ListContact() {
 
     }
 
-    function _editData(e,id){
+    function _editData(e,data){
 
       e.preventDefault();
 
       console.log("1. Sign in function edit");
 
-      let idContact = id;
-
-      dispatch(getContactById(idContact));
+      dispatch(getContactById(data));
     }
 
     const ListContact = (props) =>{
@@ -46,7 +44,7 @@ export default function ListContact() {
                 <>
                   <p key={item.id}>{item.name} - {item.phone} </p> 
                   <button className='btn btn-danger d-inline mx-1' onClick={(e)=>_deleteData(e,item.id)}>Delete</button>
-                  <button className='btn btn-success d-inline mx-1' onClick={(e)=>_editData(e,item.id)}>Edit</button>
+                  <button className='btn btn-success d-inline mx-1' onClick={(e)=>_editData(e,item)}>Edit</button>
                   <hr />
                 </>
               )

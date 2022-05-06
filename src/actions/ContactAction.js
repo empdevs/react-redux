@@ -255,13 +255,13 @@ export const deleteContact = (id) =>{
 
 }
 
-export const getContactById = (id) =>{
+export const getContactById = (data) =>{
 
     console.log("2 . Sign Action");
 
     // console.log(data);
 
-    let idContact = id;
+    let dataResponse = data;
 
     return async (dispatch) => {
 
@@ -272,48 +272,11 @@ export const getContactById = (id) =>{
             type : GET_LIST_CONTACT_BY_ID,
             payload : {
                 loading : true,
-                data : false,
+                data : dataResponse,
                 errorMessage : false
             }
 
         });
-        
-       
-       await axios.get(`http://localhost:3001/contacts/${idContact}`)
-       .then(function(response){
-
-            console.log("Success get data" ,response);
-
-            let dataResponse = response.data;
-
-            dispatch({
-
-                type : GET_LIST_CONTACT_BY_ID,
-                payload : {
-                    loading : false,
-                    data : dataResponse,
-                    errorMessage : false
-                }
-    
-            });
-
-       })
-       .catch(function(error){
-
-            console.log(error);
-
-            dispatch({
-
-                type : GET_LIST_CONTACT_BY_ID,
-                payload : {
-                    loading : false,
-                    data : false,
-                    errorMessage : error.toJSON()
-                }
-    
-            });
-
-       });
 
     }
 }
